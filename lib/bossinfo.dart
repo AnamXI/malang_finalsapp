@@ -97,13 +97,37 @@ class Bossinfo extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
+      body: Center(
+        child: Container(
+          color: AppColors.secondaryColor,
+          constraints: const BoxConstraints(maxWidth: 500),
+          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0,),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.blue,
+                  child: Container(
+                    child: SizedBox(
+                      height: 400,
+                      child: Container(
+                        color: Colors.green,
+                        child: Image.asset('assets/images/artorias.jpg', fit: BoxFit.cover, width: double.infinity,),
+                      ),
+                    ),
+                  ),
+                ),
 
-          ],
+
+              ],)
+            ,
+          ),
         ),
       ),
+
+
     );
   }
 }
