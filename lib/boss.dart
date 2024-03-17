@@ -1,11 +1,7 @@
 
-class Boss {
-  final String id;
-  final String name;
-  final String title;
-  final String img;
-  final String area;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+class Boss {
 
   Boss({
     required this.id,
@@ -15,13 +11,47 @@ class Boss {
     required this.area,
   });
 
-
+  final String id;
+  final String name;
+  final String title;
+  final String img;
+  final String area;
   bool _isFave = false;
 
   bool get isFave => _isFave;
 
   void toggleIsFav() {
     _isFave = !_isFave;
+  }
+
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'name': name,
+      'title': title,
+      'img': img,
+      'area': area,
+      'isFave': _isFave,
+    };
+  }
+
+  factory Boss.fromFirestore(
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions? options
+      ) {
+    final data = snapshot.data()!;
+
+    Boss boss = Boss(
+      name: data['name'],
+      title: data['title'],
+      img: data['img'],
+      area: data['area'],
+      id: snapshot.id
+    );
+    if (data['isFave'] == true){
+      boss.toggleIsFav();
+    }
+    return boss;
   }
 }
 
