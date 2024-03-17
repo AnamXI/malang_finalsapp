@@ -19,7 +19,7 @@ class BossStore extends ChangeNotifier {
     Boss(id: '4',name: 'Gaping Dragon',title: 'Blighted Abomination',img: 'gapingdr.jpg', area: 'The Depths'),
     Boss(id: '5',name: 'Quelaag',title: 'Chaos Witch',img: 'quelaag.jpg', area: 'Blighttown'),
     Boss(id: '6',name: 'Iron Golem',title: 'Fortress Guardian',img: 'irongolem.jpg', area: "Sen's Fortress"),
-    Boss(id: '7',name: 'Ornstein & Smough',title: 'Royal Knights',img: 'oands.png', area: 'Anor Londo'),
+    Boss(id: '7',name: 'Ornstein & Smough',title: 'Royal Knights',img: 'oands.jpg', area: 'Anor Londo'),
     Boss(id: '8',name: 'Seath',title: 'Scaleless Traitor',img: 'seathe.jpg', area: 'Crystal Caves'),
     Boss(id: '9',name: 'Nito',title: 'The Gravelord',img: 'gravelord.jpg', area: 'Tomb of the Giants'),
     Boss(id: '9',name: 'Four Kings',title: 'Kings of Londor',img: 'fourk.jpg', area: 'New Londo Ruins'),
