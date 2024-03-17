@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "501076944499",
+    "project_id": "malangfinals",
+    "storage_bucket": "malangfinals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501076944499:android:6344d64b0d0d1059282c06",
+        "android_client_info": {
+          "package_name": "com.example.malang_finalsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7E6-IgdmldgY_hxXZbtzKMwlf1sgYTf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
