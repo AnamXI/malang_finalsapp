@@ -101,11 +101,13 @@ class _RegisterState extends State<Register> {
       return;
     }
 
-    Provider.of<UserStore>(context, listen: false).addUser(
-        Userprof(id: uuid.v4(), name: _unameController.text.trim(),
-        password: _passwordController.text,
-        title: _titleController.text,
-        img: 'fourk.jpg'));
+    Provider.of<UserStore>(context, listen: false)
+        .addUser(Userprof(
+        name: _unameController.text.trim(),
+        title: _titleController.text.trim(),
+        password: _passwordController.text.trim(),
+        img: 'fourk.jpg',
+        id: uuid.v4()));
 
     Navigator.push(context, MaterialPageRoute(
       builder: (ctx) => const PlayerScreen(),

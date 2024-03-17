@@ -1,3 +1,4 @@
+import 'package:malang_finalsapp/firestore_service.dart';
 import 'package:malang_finalsapp/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class UserStore extends ChangeNotifier {
   get users => _users;
 
   void addUser(Userprof user){
+    FireStoreService.addUser(user);
+
     _users.add(user);
     notifyListeners();
   }
