@@ -57,6 +57,11 @@ ThemeData dsTheme = ThemeData(
       labelStyle: TextStyle(color: Colors.white),
       prefixIconColor: Colors.white,
     ),
+
+  dialogTheme: DialogTheme(
+    backgroundColor: AppColors.primaryColor,
+    surfaceTintColor: Colors.transparent,
+  )
 );
 
 class SText extends StatelessWidget {

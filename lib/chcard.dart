@@ -1,4 +1,5 @@
 import 'package:malang_finalsapp/boss.dart';
+import 'package:malang_finalsapp/bossinfo.dart';
 import 'package:malang_finalsapp/theme.dart';
 import 'package:malang_finalsapp/userprof.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,7 +36,9 @@ class ChCard extends StatelessWidget {
                   IconButton(onPressed: () {},
                       padding: EdgeInsets.zero, constraints: const BoxConstraints(),
                       icon: const Icon(CupertinoIcons.heart, color: Colors.white,),),
-                  IconButton(onPressed: () {},
+                  IconButton(onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (ctx) =>  Bossinfo(sboss: boss),));
+                  },
                       padding: EdgeInsets.zero, constraints: const BoxConstraints(),
                       icon: const Icon(CupertinoIcons.book_fill, color: Colors.white,)),
                 ],

@@ -40,17 +40,61 @@ class _RegisterState extends State<Register> {
         .trim()
         .isEmpty) {
         //Show Error
+
+      showDialog(context: context, builder: (ctx) {
+        return AlertDialog(
+            backgroundColor: AppColors.primaryColor,
+          surfaceTintColor: Colors.transparent,
+          title: const SHead('MISSING INPUT'),
+          content: const SText('Please input a Username'),
+          actions:[
+            FilledButton(onPressed: (){
+              Navigator.pop(ctx);
+            }, child: SHead('Close')),
+
+          ]
+        );
+      });
+
       return;
     }
     if (_titleController.text
         .trim()
         .isEmpty) {
+      showDialog(context: context, builder: (ctx) {
+        return AlertDialog(
+          backgroundColor: AppColors.primaryColor,
+            surfaceTintColor: Colors.transparent,
+            title: const SHead('MISSING INPUT'),
+            content: const SText('Please input a Title'),
+            actions:[
+              FilledButton(onPressed: (){
+                Navigator.pop(ctx);
+              }, child: SHead('Close')),
+
+            ]
+        );
+      });
       //Show Error
       return;
     }
     if (_passwordController.text
         .trim()
         .isEmpty) {
+      showDialog(context: context, builder: (ctx) {
+        return AlertDialog(
+            backgroundColor: AppColors.primaryColor,
+            surfaceTintColor: Colors.transparent,
+            title: const SHead('MISSING INPUT'),
+            content: const SText('Please input a Password'),
+            actions:[
+              FilledButton(onPressed: (){
+                Navigator.pop(ctx);
+              }, child: SHead('Close')),
+
+            ]
+        );
+      });
       //Show Error
       return;
     }
@@ -59,6 +103,10 @@ class _RegisterState extends State<Register> {
         password: _passwordController.text,
         title: _titleController.text,
         img: 'fourk.jpg'));
+
+    Navigator.push(context, MaterialPageRoute(
+      builder: (ctx) => const PlayerScreen(),
+    ));
   }
 
   @override
