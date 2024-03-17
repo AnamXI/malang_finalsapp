@@ -21,8 +21,13 @@ class DSone extends StatefulWidget {
 
 class _DSoneState extends State<DSone> {
 
-  List titles = ['First Boss', 'Bull Demon','Chaos Goat','','Blighted','Chaos Witch','Fortress Guardian','Dynamic Duo','Fallen Knight','Lords Blade','Hawkeye','The Lord of Cinder','Dutertard','AAAA','Gago'];
+  @override
+  void initState() {
+    Provider.of<BossStore>(context, listen: false)
+        .fetchBossesOnce();
 
+    super.initState();
+  }
 
   // This widget is the root of your application.
   @override

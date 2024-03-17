@@ -21,7 +21,13 @@ class PlayerScreen extends StatefulWidget {
 
 class _PlayerScreenState extends State<PlayerScreen> {
 
+  @override
+  void initState() {
+    Provider.of<UserStore>(context, listen: false)
+    .fetchUsersOnce();
 
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

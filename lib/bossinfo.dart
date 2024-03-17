@@ -51,7 +51,7 @@ class Bossinfo extends StatelessWidget {
                       STitle('${sboss.title}'),
                       SText('of ${sboss.area}'),
                       SizedBox(height: 20),
-                      SText("A half-woman, half-spider demon located in a lair near the bottom of Blighttown. One of the Witch of Izalith's daughters, transformed into a monster by the Flames of Chaos. Her notable siblings are The Fair Lady and Ceaseless Discharge. She guards the second Bell of Awakening, and the entrance to her sister's domain."),
+                      SText("${sboss.desc}"),
 
                       IconButton(onPressed: () {},
                         padding: EdgeInsets.zero, constraints: const BoxConstraints(),

@@ -9,6 +9,7 @@ class Boss {
     required this.title,
     required this.img,
     required this.area,
+    required this.desc,
   });
 
   final String id;
@@ -16,6 +17,7 @@ class Boss {
   final String title;
   final String img;
   final String area;
+  final String desc;
   bool _isFave = false;
 
   bool get isFave => _isFave;
@@ -31,6 +33,7 @@ class Boss {
       'title': title,
       'img': img,
       'area': area,
+      'desc': desc,
       'isFave': _isFave,
     };
   }
@@ -46,6 +49,7 @@ class Boss {
       title: data['title'],
       img: data['img'],
       area: data['area'],
+      desc: data['desc'],
       id: snapshot.id
     );
     if (data['isFave'] == true){

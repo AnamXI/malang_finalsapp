@@ -22,6 +22,14 @@ class DStwo extends StatefulWidget {
 class _DStwoState extends State<DStwo> {
 
   @override
+  void initState() {
+    Provider.of<BossStore>(context, listen: false)
+        .fetchBosses2Once();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -113,9 +121,9 @@ class _DStwoState extends State<DStwo> {
                         mainAxisSpacing: 50, mainAxisExtent: 320,
                       ),
 
-                      itemCount: value.ds1bosses.length,
+                      itemCount: value.ds2bosses.length,
                       itemBuilder: (_, index) {
-                        return ChCard(value.ds1bosses[index]);
+                        return ChCard(value.ds2bosses[index]);
                       },
                     );
                   }

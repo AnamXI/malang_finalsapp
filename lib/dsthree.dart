@@ -21,6 +21,14 @@ class DSthree extends StatefulWidget {
 
 class _DSthreeState extends State<DSthree> {
 
+  @override
+  void initState() {
+    Provider.of<BossStore>(context, listen: false)
+        .fetchBosses3Once();
+
+    super.initState();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -114,9 +122,9 @@ class _DSthreeState extends State<DSthree> {
                         mainAxisSpacing: 50, mainAxisExtent: 320,
                       ),
 
-                      itemCount: value.ds1bosses.length,
+                      itemCount: value.ds3bosses.length,
                       itemBuilder: (_, index) {
-                        return ChCard(value.ds1bosses[index]);
+                        return ChCard(value.ds3bosses[index]);
                       },
                     );
                   }
