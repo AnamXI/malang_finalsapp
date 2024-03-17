@@ -22,112 +22,45 @@ class Bossinfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         title: Text(sboss.name, style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 12, fontFamily: 'Optimus',),),
         centerTitle: true,
       ),
-      drawer: Drawer(
-        backgroundColor: AppColors.secondaryColor,
-        surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.zero),),
-        child: ListView(
-          children: [
-            ListTile(
-              title: const SHead('Home'),
-              leading: const Icon(CupertinoIcons.book_fill, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const Home(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Profile'),
-              leading: const Icon(CupertinoIcons.person_circle_fill, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const ProfileScreen(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Favorites'),
-              leading: const Icon(CupertinoIcons.heart_fill, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const FavoritesScreen(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Other Players'),
-              leading: const Icon(CupertinoIcons.group_solid, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const PlayerScreen(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Dark Souls I'),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const DSone(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Dark Souls II'),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const DStwo(),
-                ));
-              },
-            ),
-            ListTile(
-              title: const SHead('Dark Souls III'),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const DSthree(),
-                ));
-              },
-            ),
 
-          ],
-        ),
-      ),
       body: Center(
         child: Container(
-          color: AppColors.secondaryColor,
+          color: AppColors.primaryColor,
           constraints: const BoxConstraints(maxWidth: 500),
           margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 0,),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.blue,
-                  child: Container(
-                    child: SizedBox(
-                      height: 400,
-                      child: Container(
-                        color: Colors.green,
-                        child: Image.asset('assets/images/artorias.jpg', fit: BoxFit.cover, width: double.infinity,),
-                      ),
-                    ),
-                  ),
+                    child: Column(
+                    children: [
+                          Container(
+                          child: SizedBox(
+                            height: 400,
+                            child: Container(
+                              color: Colors.green,
+                              child: Image.asset('assets/images/${sboss.img}', fit: BoxFit.cover, width: double.infinity,),
+                            ),
+                          ),
+                        ),
+                      SizedBox(height: 20),
+                      STitle('${sboss.title}'),
+                      SText('of ${sboss.area}'),
+                      SizedBox(height: 20),
+                      SText("A half-woman, half-spider demon located in a lair near the bottom of Blighttown. One of the Witch of Izalith's daughters, transformed into a monster by the Flames of Chaos. Her notable siblings are The Fair Lady and Ceaseless Discharge. She guards the second Bell of Awakening, and the entrance to her sister's domain."),
+
+                      IconButton(onPressed: () {},
+                        padding: EdgeInsets.zero, constraints: const BoxConstraints(),
+                        icon: const Icon(CupertinoIcons.heart, color: Colors.white,),),
+                    ],)
+                  ,
                 ),
-
-
-              ],)
-            ,
-          ),
         ),
-      ),
+      ),);
 
-
-    );
   }
 }
