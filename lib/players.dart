@@ -2,6 +2,8 @@ import 'package:malang_finalsapp/theme.dart';
 import 'package:malang_finalsapp/userprof.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:malang_finalsapp/userstore.dart';
+import 'package:provider/provider.dart';
 import 'chcard.dart';
 import 'home.dart';
 import 'dsone.dart';
@@ -105,16 +107,20 @@ class _PlayerScreenState extends State<PlayerScreen> {
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, crossAxisSpacing: 0,
-                  mainAxisSpacing: 50, mainAxisExtent: 320,
-                ),
+              child: Consumer<UserStore>(
+                builder: (context, value, child) {
+                  return GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, crossAxisSpacing: 0,
+                      mainAxisSpacing: 50, mainAxisExtent: 320,
+                    ),
 
-                itemCount: users.length,
-                itemBuilder: (_, index) {
-                  return UserCard(users[index]);
-                },
+                    itemCount: value.users.length,
+                    itemBuilder: (_, index) {
+                      return UserCard(value.users[index]);
+                    },
+                  );
+                }
               ),
             ),
           ),

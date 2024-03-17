@@ -1,7 +1,9 @@
 import 'package:malang_finalsapp/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'boss.dart';
+import 'bosstore.dart';
 import 'chcard.dart';
 import 'home.dart';
 import 'dsone.dart';
@@ -103,17 +105,20 @@ class _DStwoState extends State<DStwo> {
           Expanded(
             child: Container(
               margin: const EdgeInsets.only(top: 20, bottom: 20),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 0,
-                  mainAxisSpacing: 50,
-                  mainAxisExtent: 320,
-                ),
-                itemCount: bosses.length,
-                itemBuilder: (_, index) {
-                  return ChCard(bosses[index]);
-                },
+              child: Consumer<BossStore>(
+                  builder: (context, value, child) {
+                    return GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, crossAxisSpacing: 0,
+                        mainAxisSpacing: 50, mainAxisExtent: 320,
+                      ),
+
+                      itemCount: value.ds1bosses.length,
+                      itemBuilder: (_, index) {
+                        return ChCard(value.ds1bosses[index]);
+                      },
+                    );
+                  }
               ),
             ),
           ),

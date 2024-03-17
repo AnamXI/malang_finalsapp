@@ -27,3 +27,4 @@ List<Userprof> users = [
   Userprof(id: '3', name: 'JudgementKazzy', password: 'majimalove10', title: 'John Yakuzer', img: 'hydra.jpg'),
   Userprof(id: '4', name: 'Todoroque', password: 'dolomiteFTW', title: 'Dololover', img: 'asylumd.jpg'),
 ];
+

@@ -2,6 +2,8 @@ import 'package:malang_finalsapp/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:malang_finalsapp/userprof.dart';
+import 'package:malang_finalsapp/userstore.dart';
+import 'package:provider/provider.dart';
 import 'dsone.dart';
 import 'dstwo.dart';
 import 'dsthree.dart';
@@ -99,7 +101,8 @@ class _RegisterState extends State<Register> {
       return;
     }
 
-    users.add(Userprof(id: uuid.v4(), name: _unameController.text.trim(),
+    Provider.of<UserStore>(context, listen: false).addUser(
+        Userprof(id: uuid.v4(), name: _unameController.text.trim(),
         password: _passwordController.text,
         title: _titleController.text,
         img: 'fourk.jpg'));
