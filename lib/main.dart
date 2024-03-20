@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-
+//MAIN FUNCTION AND INITIALIZATIONS
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -18,12 +18,16 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  //SETS THE DATA PROVIDERS USED
   runApp(MultiProvider(
       providers: [
       ChangeNotifierProvider(create: (context) => BossStore()),
         ChangeNotifierProvider(create: (context) => UserStore()),
       ],
+
+    //RUNS THE APP PROPER
     child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: dsTheme,
         home: const Home()
     ),

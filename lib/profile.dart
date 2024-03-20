@@ -8,6 +8,8 @@ import 'dsthree.dart';
 import 'favorites.dart';
 import 'players.dart';
 
+//UNUSED CLASS/PAGE, please ignore
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -17,8 +19,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
 
-  List titles = ['First Boss', 'Bull Demon','Chaos Goat','Blighted',];
-  List usernames = ['Asa Wako', 'Butawzkii','TodoRoque','Agua',];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +26,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('PROFILE', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 12, fontFamily: 'Optimus',),),
         centerTitle: true,
       ),
+
+      //======================SIDE MENU===========================
       drawer: Drawer(
         backgroundColor: AppColors.secondaryColor,
         surfaceTintColor: Colors.transparent,
@@ -97,6 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
+      //======================SIDE MENU===========================
 
     );
   }

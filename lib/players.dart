@@ -1,5 +1,4 @@
 import 'package:malang_finalsapp/theme.dart';
-import 'package:malang_finalsapp/userprof.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:malang_finalsapp/userstore.dart';
@@ -10,7 +9,10 @@ import 'dsone.dart';
 import 'dstwo.dart';
 import 'dsthree.dart';
 import 'favorites.dart';
-import 'profile.dart';
+
+
+//PLAYERS PAGE DISPLAYING EXISTING AND ADDED PLAYER PROFILES
+//(THIS IS JUST A MOCKUP/DISPLAY, PROFILES HAVE NO FUNCTIONALITY YET)
 
 class PlayerScreen extends StatefulWidget {
   const PlayerScreen({super.key});
@@ -36,6 +38,9 @@ class _PlayerScreenState extends State<PlayerScreen> {
         title: const Text('PLAYERS', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 12, fontFamily: 'Optimus',),),
         centerTitle: true,
       ),
+
+
+      //======================SIDE MENU===========================
       drawer: Drawer(
         backgroundColor: AppColors.secondaryColor,
         surfaceTintColor: Colors.transparent,
@@ -52,15 +57,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                 ));
               },
             ),
-            ListTile(
-              title: const SHead('Profile'),
-              leading: const Icon(CupertinoIcons.person_circle_fill, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const ProfileScreen(),
-                ));
-              },
-            ),
+
             ListTile(
               title: const SHead('Favorites'),
               leading: const Icon(CupertinoIcons.heart_fill, color: Colors.white,),
@@ -107,6 +104,10 @@ class _PlayerScreenState extends State<PlayerScreen> {
           ],
         ),
       ),
+      //======================SIDE MENU===========================
+
+
+      //GRIDVIEW DISPLAYING PLAYER PROFILE CARDS
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

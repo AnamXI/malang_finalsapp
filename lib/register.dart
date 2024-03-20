@@ -37,12 +37,14 @@ class _RegisterState extends State<Register> {
     super.dispose();
   }
 
+  //HANDLER FOR SUBMITTING PROFILE INFORMATION
   void handleSubmit() {
     if (_unameController.text
         .trim()
         .isEmpty) {
         //Show Error
 
+      //ERROR POPUP IF NO USERNAME IS ENTERED
       showDialog(context: context, builder: (ctx) {
         return AlertDialog(
             backgroundColor: AppColors.primaryColor,
@@ -57,9 +59,10 @@ class _RegisterState extends State<Register> {
           ]
         );
       });
-
       return;
     }
+
+    //ERROR POPUP IF NO PLAYER TITLE IS ENTERED
     if (_titleController.text
         .trim()
         .isEmpty) {
@@ -80,6 +83,8 @@ class _RegisterState extends State<Register> {
       //Show Error
       return;
     }
+
+    //ERROR POPUP IF NO PASSWORD IS ENTERED
     if (_passwordController.text
         .trim()
         .isEmpty) {
@@ -101,6 +106,9 @@ class _RegisterState extends State<Register> {
       return;
     }
 
+    //IF ALL FIELDS ARE FILLED, SENDS THE DATA TO THE FIRESTORE DATABASE
+    //AND CREATES A NEW DOCUMENT IN THE "PROFILES" COLLECTION TO BE DISPLAYED IN THE PLAYERS PAGE
+    //ID IS RANDOMLY GENERATED VIA UUID PLUGIN
     Provider.of<UserStore>(context, listen: false)
         .addUser(Userprof(
         name: _unameController.text.trim(),
@@ -121,7 +129,10 @@ class _RegisterState extends State<Register> {
         title: const Text('REGISTER', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 12, fontFamily: 'Optimus',),),
         centerTitle: true,
       ),
-      drawer: Drawer(
+
+
+        //======================SIDE MENU===========================
+        drawer: Drawer(
         backgroundColor: AppColors.secondaryColor,
         surfaceTintColor: Colors.transparent,
         shape: const RoundedRectangleBorder(
@@ -137,15 +148,7 @@ class _RegisterState extends State<Register> {
                 ));
               },
             ),
-            ListTile(
-              title: const SHead('Profile'),
-              leading: const Icon(CupertinoIcons.person_circle_fill, color: Colors.white,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (ctx) => const ProfileScreen(),
-                ));
-              },
-            ),
+
             ListTile(
               title: const SHead('Favorites'),
               leading: const Icon(CupertinoIcons.heart_fill, color: Colors.white,),
@@ -156,7 +159,7 @@ class _RegisterState extends State<Register> {
               },
             ),
             ListTile(
-              title: const SHead('Other Players'),
+              title: const SHead('Players'),
               leading: const Icon(CupertinoIcons.group_solid, color: Colors.white,),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(
@@ -192,6 +195,10 @@ class _RegisterState extends State<Register> {
           ],
         ),
       ),
+        //======================SIDE MENU===========================
+
+
+      //PLAYER PROFILE REGISTRATION PAGE
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         child: SingleChildScrollView(
@@ -203,7 +210,7 @@ class _RegisterState extends State<Register> {
                 const STitle('REGISTER'),
                 const SizedBox(height: 30,),
 
-                //TEXTFIELDS
+                //USERNAME FIELD
                 TextField(
                   controller: _unameController,
                   style: const TextStyle(
@@ -216,6 +223,8 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 const SizedBox(height: 20),
+
+                //PLAYER TITLE FIELD
                 TextField(
                   controller: _titleController,
                   style: const TextStyle(
@@ -228,6 +237,8 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 const SizedBox(height: 20,),
+
+                //PASSWORD FIELD
                 TextField(
                   controller: _passwordController,
                   style: const TextStyle(

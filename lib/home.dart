@@ -6,9 +6,10 @@ import 'dsone.dart';
 import 'dstwo.dart';
 import 'dsthree.dart';
 import 'favorites.dart';
-import 'profile.dart';
 import 'players.dart';
 
+
+//HOME PAGE
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -18,15 +19,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List bosses = ['DragonSlayer Ornstein', 'Knight Artorias', 'LordsBlade Ciaran', 'Hawkeye Gough', 'Gwyn The Lord Of Cinder', 'Harry Roque', 'Kratos', 'Kamuning Secret Files'];
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('DARKSOULS', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 12, fontFamily: 'Optimus',),),
+          title: const STitle('DS ARCHIVE'),
           centerTitle: true,
         ),
+
+
+      //======================SIDE MENU===========================
         drawer: Drawer(
           backgroundColor: AppColors.secondaryColor,
           surfaceTintColor: Colors.transparent,
@@ -43,15 +46,7 @@ class _HomeState extends State<Home> {
                   ));
                 },
               ),
-              ListTile(
-                title: const SHead('Profile'),
-                leading: const Icon(CupertinoIcons.person_circle_fill, color: Colors.white,),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (ctx) => const ProfileScreen(),
-                  ));
-                },
-              ),
+
               ListTile(
                 title: const SHead('Favorites'),
                 leading: const Icon(CupertinoIcons.heart_fill, color: Colors.white,),
@@ -62,7 +57,7 @@ class _HomeState extends State<Home> {
                 },
               ),
               ListTile(
-                title: const SHead('Other Players'),
+                title: const SHead('Players'),
                 leading: const Icon(CupertinoIcons.group_solid, color: Colors.white,),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
@@ -95,7 +90,7 @@ class _HomeState extends State<Home> {
                 },
               ),
               ListTile(
-                title: const SHead('Tester'),
+                title: const SHead('REGISTER'),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
                     builder: (ctx) => const Register(),
@@ -105,7 +100,12 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
+      //======================SIDE MENU===========================
+
+
       body: Center(
+
+        //DISPLAYS THE MAIN MENU IMAGE
         child: Container(
           color: AppColors.primaryColor,
           constraints: const BoxConstraints(maxWidth: 500),
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                         height: 400,
                         child: Container(
                           color: Colors.green,
-                          child: Image.asset('assets/images/artorias.jpg', fit: BoxFit.cover, width: double.infinity,),
+                          child: Image.asset('assets/images/bonfire.jpg', fit: BoxFit.cover, width: double.infinity,),
                         ),
                       ),
                     ),
@@ -131,8 +131,13 @@ class _HomeState extends State<Home> {
                         decoration: const BoxDecoration(
                             boxShadow: [BoxShadow(color: Colors.black54, spreadRadius: 1, offset: Offset(0,20)),
                         ]) ,
+
+
+                       //DISPLAYS THE NAVIGATOR BUTTONS FOR DS1/DS2/DS3 PAGES
                         child: Column(
                         children: [
+
+                          //DARK SOULS 1 BUTTON
                           SizedBox(
                               width: MediaQuery.of(context).size.width,
                               height: 60,
@@ -147,8 +152,10 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.all(Radius.zero),
                                   ),
                                 ),
-                                  child: const SHead('DARK SOULS I'),
+                                  child: const Text('DARK SOULS I', style: TextStyle(fontFamily: 'Optimus', fontSize: 25),),
                            )),
+
+                          //DARK SOULS 2 BUTTON
                           SizedBox(
                               width: MediaQuery.of(context).size.width,
                               height: 60,
@@ -163,8 +170,10 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.all(Radius.zero),
                                   ),
                                 ),
-                                child: const SHead('DARK SOULS II'),
+                                child: const Text('DARK SOULS II', style: TextStyle(fontFamily: 'Optimus', fontSize: 25),)
                               )),
+
+                          //DARK SOULS 3 BUTTON
                           SizedBox(
                               width: MediaQuery.of(context).size.width,
                               height: 60,
@@ -179,51 +188,20 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.all(Radius.zero),
                                   ),
                                 ),
-                                child: const SHead('DARK SOULS III'),
+                                child: const Text('DARK SOULS III', style: TextStyle(fontFamily: 'Optimus', fontSize: 25),)
                               )),
                         ],
                       ),
                     ),
 
-                ],)
-                ,
+                    //HOTASEII IS MY ARTIST NAME, THIS IS HERE FOR CREDIT AND SHOWCASE PURPOSES
+                    //FOR THE FINAL BUILD
+                    const SizedBox(height: 150,),
+                    const SText('Made by: Hotaseii'),
+                ],),
               ),
           ),
         ),
-
     );
   }
 }
-
-
-// ListView.builder(
-// itemCount: bosses.length,
-// itemBuilder: (_, index) {
-// return Container(
-// color: Colors.grey,
-// padding: const EdgeInsets.all(20),
-// margin: const EdgeInsets.symmetric(vertical: 40),
-// child: Text(bosses[index]),
-// );
-// },
-// ),
-
-// Container(
-// padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-// margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-// decoration: BoxDecoration(
-// color: Colors.black,
-// boxShadow: [BoxShadow(color: Colors.black54, spreadRadius: 1, offset: Offset(8,8)),
-// ]),
-// child: Expanded(
-// child: Column(
-// mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-// crossAxisAlignment: CrossAxisAlignment.stretch,
-// children: [
-// Image.asset('assets/images/artorias.jpg', width: 50,),
-// Text(bosses[index]),
-//
-// ],
-// ),
-// ),
-// )

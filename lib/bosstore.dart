@@ -1,26 +1,34 @@
-import 'package:malang_finalsapp/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'boss.dart';
-import 'chcard.dart';
 import 'firestore_service.dart';
-import 'home.dart';
-import 'dsone.dart';
-import 'dsthree.dart';
-import 'favorites.dart';
-import 'profile.dart';
-import 'players.dart';
+
+//STORING/FETCHING OF BOSS DATA
 
 class BossStore extends ChangeNotifier {
 
+  //Initializing boss lists and preparing categories
   final List<Boss> _bosses = [];
   final List<Boss> _bosses2 = [];
   final List<Boss> _bosses3 = [];
 
+  final List<Boss> _bossesf = [];
+
+
+  //Fetching the private values for outside use
   get ds1bosses => _bosses;
   get ds2bosses => _bosses2;
   get ds3bosses => _bosses3;
 
+  get fbosses => _bossesf;
+
+  //UPDATE FAVE
+  Future<void> saveFave(Boss boss) async {
+    await FireStoreService.updateFave(boss);
+    return;
+  }
+
+  //Fetch Dark Souls 1 Boss Data from DB
   void fetchBossesOnce() async {
     if (ds1bosses.length == 0){
       final snapshot = await FireStoreService.getBossesOnce();
@@ -34,6 +42,7 @@ class BossStore extends ChangeNotifier {
     }
   }
 
+  //Fetch Dark Souls 2 Boss Data from DB
   void fetchBosses2Once() async {
     if (ds2bosses.length == 0){
       final snapshot = await FireStoreService.getBosses2Once();
@@ -47,6 +56,7 @@ class BossStore extends ChangeNotifier {
     }
   }
 
+  //Fetch Dark Souls 3 Boss Data from DB
   void fetchBosses3Once() async {
     if (ds3bosses.length == 0){
       final snapshot = await FireStoreService.getBosses3Once();
@@ -59,15 +69,19 @@ class BossStore extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  //FAVORITES
+  void fetchBossesFOnce() async {
+    if (fbosses.length == 0){
+      final snapshot = await FireStoreService.getBossesFOnce();
+
+      for (var doc in snapshot.docs){
+        _bossesf.add(doc.data());
+      }
+      notifyListeners();
+    }
+  }
+
+
 }
 
-// Boss(id: '1',name: 'Asylum Demon',title: 'Warden',img: 'asylumd.jpg', area: 'Undead Asylum'),
-// Boss(id: '2',name: 'Taurus Demon',title: 'Chaos Bull',img: 'taurusd.jpg', area: 'Undead Burg'),
-// Boss(id: '3',name: 'Capra Demon',title: 'Chaos Goat',img: 'caprad.jpg', area: 'Lower Undead Burg'),
-// Boss(id: '4',name: 'Gaping Dragon',title: 'Blighted Abomination',img: 'gapingdr.jpg', area: 'The Depths'),
-// Boss(id: '5',name: 'Quelaag',title: 'Chaos Witch',img: 'quelaag.jpg', area: 'Blighttown'),
-// Boss(id: '6',name: 'Iron Golem',title: 'Fortress Guardian',img: 'irongolem.jpg', area: "Sen's Fortress"),
-// Boss(id: '7',name: 'Ornstein & Smough',title: 'Royal Knights',img: 'oands.jpg', area: 'Anor Londo'),
-// Boss(id: '8',name: 'Seath',title: 'Scaleless Traitor',img: 'seathe.jpg', area: 'Crystal Caves'),
-// Boss(id: '9',name: 'Nito',title: 'The Gravelord',img: 'gravelord.jpg', area: 'Tomb of the Giants'),
-// Boss(id: '9',name: 'Four Kings',title: 'Kings of Londor',img: 'fourk.jpg', area: 'New Londo Ruins'),

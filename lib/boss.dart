@@ -1,15 +1,15 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+//Creating Boss class
 class Boss {
 
   Boss({
-    required this.id,
-    required this.name,
-    required this.title,
-    required this.img,
-    required this.area,
-    required this.desc,
+    required this.id, //ID in the database
+    required this.name, //Name of the boss (e.g "Radahn", "Gwyn")
+    required this.title, //Title of the boss (e.g "General", "Lord")
+    required this.img, //jpg of the boss
+    required this.area, //Area the boss is found it
+    required this.desc, //Brief general description of the boss lore, fight, and appearance
   });
 
   final String id;
@@ -20,13 +20,16 @@ class Boss {
   final String desc;
   bool _isFave = false;
 
+  //Fetching favorite value
   bool get isFave => _isFave;
 
+  //If boss if favorite, unfavorite it when function is run, and vice versa
   void toggleIsFav() {
     _isFave = !_isFave;
   }
 
 
+  //Boss data model for FireStore
   Map<String, dynamic> toFirestore() {
     return {
       'name': name,
@@ -38,6 +41,7 @@ class Boss {
     };
   }
 
+  //Converting/Mapping Firestore boss data into Data usable by app
   factory Boss.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options
@@ -58,27 +62,3 @@ class Boss {
     return boss;
   }
 }
-
-// final List<Boss> bosses = [
-//
-//   //Dark Souls I Bosses
-//   Boss(id: '1',name: 'Asylum Demon',title: 'Warden',img: 'asylumd.jpg', area: 'Undead Asylum'),
-//   Boss(id: '2',name: 'Taurus Demon',title: 'Chaos Bull',img: 'taurusd.jpg', area: 'Undead Burg'),
-//   Boss(id: '3',name: 'Capra Demon',title: 'Chaos Goat',img: 'caprad.jpg', area: 'Lower Undead Burg'),
-//   Boss(id: '4',name: 'Gaping Dragon',title: 'Blighted Abomination',img: 'gapingdr.jpg', area: 'The Depths'),
-// ];
-//
-// final List<Boss> ds1bosses = [
-//
-//   //Dark Souls I Bosses
-//   Boss(id: '1',name: 'Asylum Demon',title: 'Warden',img: 'asylumd.jpg', area: 'Undead Asylum'),
-//   Boss(id: '2',name: 'Taurus Demon',title: 'Chaos Bull',img: 'taurusd.jpg', area: 'Undead Burg'),
-//   Boss(id: '3',name: 'Capra Demon',title: 'Chaos Goat',img: 'caprad.jpg', area: 'Lower Undead Burg'),
-//   Boss(id: '4',name: 'Gaping Dragon',title: 'Blighted Abomination',img: 'gapingdr.jpg', area: 'The Depths'),
-//   Boss(id: '5',name: 'Quelaag',title: 'Chaos Witch',img: 'quelaag.jpg', area: 'Blighttown'),
-//   Boss(id: '6',name: 'Iron Golem',title: 'Fortress Guardian',img: 'irongolem.jpg', area: "Sen's Fortress"),
-//   Boss(id: '7',name: 'Ornstein & Smough',title: 'Royal Knights',img: 'oands.png', area: 'Anor Londo'),
-//   Boss(id: '8',name: 'Seath',title: 'Scaleless Traitor',img: 'seathe.jpg', area: 'Crystal Caves'),
-//   Boss(id: '9',name: 'Nito',title: 'The Gravelord',img: 'gravelord.jpg', area: 'Tomb of the Giants'),
-//   Boss(id: '9',name: 'Four Kings',title: 'Kings of Londor',img: 'fourk.jpg', area: 'New Londo Ruins'),
-// ];
